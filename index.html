@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Producer Co. — Digital Ecosystems for Global Agriculture</title>
+<style>
+/* ══ RESET ══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#F8F6F1;color:#1A1916;line-height:1.7;overflow-x:hidden}
+
+/* ══ TOKENS ══ */
+:root{
+  --c0:#F8F6F1;   /* warm cream */
+  --c1:#F2EEE6;   /* cream 2 */
+  --c2:#EAE5DA;   /* cream 3 */
+  --white:#FFFFFF;
+  --gold:#A67C2E;
+  --gold2:#C49A3C;
+  --gold-light:#F5EDD6;
+  --sage:#3D6B52;
+  --earth:#6B5240;
+  --sky:#3A7FA8;
+  --ink:#1A1916;
+  --ink2:#3A3834;
+  --muted:#7A7670;
+  --border:rgba(26,25,22,0.10);
+  --border-gold:rgba(166,124,46,0.22);
+  --shadow:0 2px 24px rgba(26,25,22,0.06);
+  --shadow-lg:0 12px 56px rgba(26,25,22,0.09);
+}
+
+/* ══ TYPE ══ */
+h1,h2,h3,h4{font-family:Georgia,'Times New Roman',serif;letter-spacing:-0.02em;color:var(--ink)}
+
+/* ══════════ NAV ══════════ */
+nav{
+  position:fixed;top:0;width:100%;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 72px;
+  background:rgba(248,246,241,0.94);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-family:Georgia,serif;font-size:17px;color:var(--ink);text-decoration:none;letter-spacing:.05em;display:flex;align-items:center;gap:10px}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:.07em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{padding:9px 22px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:all .22s}
+.nav-cta:hover{background:var(--ink);color:var(--white)}
+
+/* ══════════ HERO ══════════ */
+#hero{
+  min-height:100vh;display:flex;align-items:center;
+  background:var(--c0);position:relative;overflow:hidden;
+}
+#hero::after{
+  content:'';position:absolute;width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(166,124,46,0.07) 0%,transparent 70%);
+  top:-180px;right:-140px;pointer-events:none;
+}
+.hero-wrap{
+  position:relative;z-index:1;
+  max-width:1280px;margin:0 auto;padding:140px 72px 96px;
+  display:grid;grid-template-columns:1.15fr 0.85fr;gap:72px;align-items:center;
+}
+.hero-pre{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:26px}
+.hero-pre::before{content:'';width:32px;height:1px;background:var(--gold)}
+h1.hero-title{font-size:clamp(44px,5.8vw,76px);line-height:1.06;margin-bottom:26px}
+h1.hero-title em{color:var(--gold);font-style:italic}
+.hero-desc{font-size:17px;color:var(--muted);line-height:1.88;max-width:480px;margin-bottom:48px}
+.hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.btn-fill{padding:14px 36px;background:var(--ink);color:var(--white);text-decoration:none;font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:background .22s}
+.btn-fill:hover{background:var(--gold)}
+.btn-line{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:.07em;text-transform:uppercase;display:flex;align-items:center;gap:6px;transition:color .2s}
+.btn-line:hover{color:var(--ink)}
+
+/* Hero emblem */
+.hero-viz{display:flex;justify-content:center;align-items:center}
+.hero-ring{animation:ring-spin 48s linear infinite}
+.hero-core{animation:ring-spin 48s linear infinite reverse}
+@keyframes ring-spin{to{transform:rotate(360deg)}}
+
+/* ══════════ MARQUEE ══════════ */
+.marquee{background:var(--c1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:15px 0;overflow:hidden}
+.marquee-inner{display:flex;white-space:nowrap;animation:mq 36s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq-item{display:inline-flex;align-items:center;gap:20px;padding:0 28px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.mq-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* ══════════ STATS ══════════ */
+.stats-row{background:var(--white);border-bottom:1px solid var(--border)}
+.stats-grid{max-width:1280px;margin:0 auto;padding:0 72px;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-box{padding:52px 28px;text-align:center;border-right:1px solid var(--border)}
+.stat-box:last-child{border-right:none}
+.stat-n{font-family:Georgia,serif;font-size:54px;line-height:1;color:var(--ink);letter-spacing:-.03em}
+.stat-n b{color:var(--gold);font-weight:400}
+.stat-l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+/* ══════════ SHARED ══════════ */
+section{padding:108px 0}
+.container{max-width:1280px;margin:0 auto;padding:0 72px}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--gold)}
+.sec-h{font-size:clamp(28px,3.8vw,46px);line-height:1.2;margin-bottom:18px}
+.sec-p{font-size:16px;color:var(--muted);line-height:1.9;max-width:560px}
+.divider{width:100%;height:1px;background:var(--border);margin:72px 0}
+
+/* ══════════ CHALLENGE ══════════ */
+#challenge{background:var(--white)}
+.chal-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:64px;align-items:start}
+.chal-cards{display:flex;flex-direction:column;gap:20px}
+.chal-card{border:1px solid var(--border);padding:32px;background:var(--white);transition:border-color .22s,box-shadow .22s}
+.chal-card:hover{border-color:var(--border-gold);box-shadow:var(--shadow)}
+.chal-card h4{font-size:17px;margin-bottom:10px}
+.chal-card p{font-size:14px;color:var(--muted);line-height:1.85}
+.pill{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border:1px solid var(--border-gold);color:var(--gold);margin:12px 6px 0 0}
+.pullquote{border-left:2px solid var(--gold);padding:32px 38px;background:var(--c1);margin-bottom:24px}
+.pullquote p{font-family:Georgia,serif;font-size:19px;line-height:1.65;color:var(--ink);font-style:italic}
+.pullquote cite{display:block;margin-top:16px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-style:normal}
+.gap-table{border:1px solid var(--border);background:var(--c0)}
+.gap-row{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--border);gap:12px}
+.gap-row:last-child{border-bottom:none}
+.gap-row span{font-size:13px;color:var(--ink2)}
+.badge-gap{font-size:10px;padding:3px 10px;border:1px solid var(--border);color:var(--muted);letter-spacing:.07em;white-space:nowrap}
+.badge-ok{font-size:10px;padding:3px 10px;border:1px solid rgba(61,107,82,.3);color:var(--sage);background:#EFF6F2;letter-spacing:.07em;white-space:nowrap}
+
+/* ══════════ STAKEHOLDERS ══════════ */
+#stakeholders{background:var(--c1)}
+.stake-matrix{margin-top:64px;overflow-x:auto}
+table.matrix{width:100%;border-collapse:collapse}
+table.matrix th,table.matrix td{padding:18px 22px;text-align:left;border:1px solid var(--border);font-size:13px;line-height:1.65}
+table.matrix thead th{background:var(--ink);color:var(--white);font-family:Georgia,serif;font-size:14px;font-weight:400;border-color:rgba(255,255,255,0.1)}
+table.matrix thead th:first-child{background:var(--c0);color:var(--ink);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-color:var(--border)}
+table.matrix tbody tr:nth-child(even) td{background:rgba(248,246,241,.5)}
+table.matrix tbody td:first-child{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--c0);font-family:inherit}
+table.matrix .col-sci{color:var(--sage)}
+table.matrix .col-pol{color:var(--sky)}
+table.matrix .col-agr{color:var(--earth)}
+table.matrix .col-ext{color:var(--gold)}
+
+/* ══════════ FOUR PILLARS ══════════ */
+#pillars{background:var(--white)}
+.pillar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);margin-top:64px;border:1px solid var(--border)}
+.pillar{background:var(--white);padding:44px 32px;transition:background .22s}
+.pillar:hover{background:var(--c0)}
+.pillar-icon{font-size:26px;margin-bottom:22px}
+.pillar-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.p1 .pillar-tag{color:var(--sky)}
+.p2 .pillar-tag{color:var(--sage)}
+.p3 .pillar-tag{color:var(--gold)}
+.p4 .pillar-tag{color:var(--earth)}
+.pillar h3{font-size:18px;margin-bottom:12px}
+.pillar p{font-size:13px;color:var(--muted);line-height:1.85}
+.pillar-line{width:28px;height:1px;margin-top:24px}
+.p1 .pillar-line{background:var(--sky)}
+.p2 .pillar-line{background:var(--sage)}
+.p3 .pillar-line{background:var(--gold)}
+.p4 .pillar-line{background:var(--earth)}
+
+/* ══════════ ARCHITECTURE FLYWHEEL ══════════ */
+#flywheel{background:var(--c1)}
+.flywheel-wrap{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:64px;align-items:center}
+.flywheel-steps{display:flex;flex-direction:column;gap:0}
+.fw-step{display:flex;gap:24px;align-items:flex-start;padding:26px 0;border-bottom:1px solid var(--border)}
+.fw-step:first-child{border-top:1px solid var(--border)}
+.fw-num{font-family:Georgia,serif;font-size:28px;color:var(--gold);line-height:1;flex-shrink:0;min-width:36px}
+.fw-step h4{font-size:15px;margin-bottom:6px}
+.fw-step p{font-size:13px;color:var(--muted);line-height:1.8}
+.fw-center{background:var(--white);border:1px solid var(--border);padding:48px 44px;text-align:center}
+.fw-center .fc-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.fw-center p{font-family:Georgia,serif;font-size:20px;line-height:1.55;color:var(--ink);font-style:italic}
+
+/* ══════════ TECHNOLOGY ══════════ */
+#technology{background:var(--white)}
+.tech-intro{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-bottom:64px;align-items:end}
+/* Data pipeline levels */
+.levels{display:flex;flex-direction:column;gap:0;margin-top:48px;border:1px solid var(--border)}
+.level-row{display:flex;gap:0;border-bottom:1px solid var(--border);transition:background .2s}
+.level-row:last-child{border-bottom:none}
+.level-row:hover{background:var(--c0)}
+.level-step{width:120px;flex-shrink:0;padding:20px 22px;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center}
+.level-step .ls-num{font-family:Georgia,serif;font-size:22px;color:var(--gold);line-height:1}
+.level-step .ls-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.level-content{padding:20px 28px;flex:1}
+.level-content h4{font-size:14px;margin-bottom:5px}
+.level-content p{font-size:13px;color:var(--muted);line-height:1.75}
+
+/* Hub cards */
+.hub-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--border);border:1px solid var(--border);margin-top:48px}
+.hub-card{background:var(--white);padding:32px 26px;transition:background .22s}
+.hub-card:hover{background:var(--c0)}
+.hub-icon{font-size:22px;margin-bottom:16px}
+.hub-card h4{font-size:15px;margin-bottom:8px}
+.hub-card p{font-size:13px;color:var(--muted);line-height:1.8}
+
+/* AgriChain */
+.agrichain{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.ag-card{border:1px solid var(--border);padding:40px 36px;background:var(--c0);transition:border-color .22s,box-shadow .22s}
+.ag-card:hover{border-color:var(--border-gold);box-shadow:var(--shadow)}
+.ag-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.ag-card h3{font-size:20px;margin-bottom:14px}
+.ag-card p{font-size:13px;color:var(--muted);line-height:1.85}
+.ag-metric{margin-top:22px;padding-top:20px;border-top:1px solid var(--border);display:flex;align-items:baseline;gap:8px}
+.ag-metric .am-n{font-family:Georgia,serif;font-size:32px;color:var(--ink)}
+.ag-metric .am-l{font-size:12px;color:var(--muted)}
+
+/* FAIR */
+.fair-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.fair-card{border:1px solid var(--border);padding:30px 24px;background:var(--white)}
+.fair-letter{font-family:Georgia,serif;font-size:48px;color:var(--border);line-height:1;margin-bottom:12px}
+.fair-card h4{font-size:14px;margin-bottom:8px}
+.fair-card p{font-size:13px;color:var(--muted);line-height:1.8}
+
+/* CRISP + Rice Array */
+.crisp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.crisp-card{border:1px solid var(--border);padding:40px 36px;background:var(--white);transition:border-color .22s,transform .22s,box-shadow .22s}
+.crisp-card:hover{border-color:var(--border-gold);transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.crisp-card::before{content:'';display:block;width:32px;height:2px;background:var(--gold);margin-bottom:22px}
+.crisp-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.crisp-card h3{font-size:20px;margin-bottom:14px}
+.crisp-card p{font-size:13px;color:var(--muted);line-height:1.85}
+.crisp-stat{margin-top:22px;padding-top:20px;border-top:1px solid var(--border)}
+.crisp-stat .cs-n{font-family:Georgia,serif;font-size:36px;color:var(--ink)}
+.crisp-stat .cs-l{font-size:12px;color:var(--muted)}
+
+/* Molecular */
+.molecular{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+.mol-main{border:1px solid var(--border);padding:40px 36px;background:var(--c0)}
+.mol-main h3{font-size:20px;margin-bottom:14px}
+.mol-main p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:20px}
+.mol-gene{border:1px solid var(--border-gold);background:var(--gold-light);padding:28px 28px}
+.mol-gene h4{font-size:15px;margin-bottom:8px;color:var(--gold)}
+.mol-gene p{font-size:13px;color:var(--ink2);line-height:1.8}
+.mol-side{display:flex;flex-direction:column;gap:16px}
+.mol-point{border:1px solid var(--border);padding:22px 24px;background:var(--white);flex:1;transition:border-color .22s}
+.mol-point:hover{border-color:var(--border-gold)}
+.mol-point h5{font-size:13px;color:var(--ink);margin-bottom:5px;font-family:Georgia,serif}
+.mol-point p{font-size:12px;color:var(--muted);line-height:1.75}
+
+/* Section dividers with label */
+.sec-divide{display:flex;align-items:center;gap:20px;margin:72px 0 56px}
+.sec-divide span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.sec-divide::before,.sec-divide::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ══════════ OUTCOMES ══════════ */
+#outcomes{background:var(--c1)}
+.outcomes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:64px}
+.oc-card{background:var(--white);border:1px solid var(--border);padding:40px 30px;transition:border-color .22s,transform .22s,box-shadow .22s}
+.oc-card:hover{border-color:var(--border-gold);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.oc-n{font-family:Georgia,serif;font-size:13px;color:var(--gold);letter-spacing:.08em;margin-bottom:18px}
+.oc-card h3{font-size:18px;margin-bottom:12px}
+.oc-card p{font-size:13px;color:var(--muted);line-height:1.85}
+.oc-bar{width:28px;height:1px;background:var(--gold);margin-top:22px}
+
+/* ══════════ BRAND / IDENTITY ══════════ */
+#brand{background:var(--white)}
+.brand-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:64px;align-items:start}
+.id-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.id-card{border:1px solid var(--border);padding:28px;background:var(--c0);transition:box-shadow .22s}
+.id-card:hover{box-shadow:var(--shadow)}
+.id-card h4{font-size:15px;margin-bottom:10px}
+.id-card p{font-size:13px;color:var(--muted);line-height:1.8}
+.pal{display:flex;gap:8px;margin-top:14px}
+.pdot{width:30px;height:30px;border-radius:50%;border:1px solid var(--border)}
+.type-demo .td1{font-family:Georgia,serif;font-size:20px;color:var(--ink);margin-top:14px}
+.type-demo .td2{font-size:12px;letter-spacing:.06em;color:var(--muted)}
+
+.brand-right{display:flex;flex-direction:column;gap:22px}
+.brand-statement{border:1px solid var(--border-gold);padding:52px 44px;text-align:center;background:var(--gold-light)}
+.bs-pre{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.brand-statement h2{font-size:26px;line-height:1.4;font-style:italic}
+.brand-statement h2 em{color:var(--gold);font-style:normal}
+.shift-row{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center}
+.shift-box{border:1px solid var(--border);padding:22px;background:var(--c0);text-align:center}
+.shift-box .sb-l{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.shift-box .sb-t{font-family:Georgia,serif;font-size:14px;color:var(--ink)}
+.shift-arrow{font-size:22px;color:var(--gold)}
+
+/* ══════════ GLOBAL ══════════ */
+#global{background:var(--c1)}
+.global-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:64px;align-items:start}
+.gp-list{display:flex;flex-direction:column}
+.gp-item{display:flex;gap:22px;align-items:flex-start;padding:26px 0;border-bottom:1px solid var(--border)}
+.gp-item:first-child{border-top:1px solid var(--border)}
+.gp-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:7px}
+.gp-item h4{font-size:15px;margin-bottom:5px}
+.gp-item p{font-size:13px;color:var(--muted);line-height:1.8}
+
+/* ══════════ CTA ══════════ */
+#cta{background:var(--c2);padding:120px 0;text-align:center;border-top:1px solid var(--border)}
+#cta .eyebrow{justify-content:center}
+#cta h2{font-size:clamp(30px,5vw,52px);margin-bottom:20px;line-height:1.2}
+#cta h2 em{color:var(--gold);font-style:italic}
+#cta p{font-size:16px;color:var(--muted);max-width:460px;margin:0 auto 48px;line-height:1.9}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-outline{padding:14px 38px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:all .22s}
+.btn-outline:hover{background:var(--ink);color:var(--white)}
+.btn-gold-fill{padding:14px 38px;background:var(--gold);color:var(--white);text-decoration:none;font-size:12px;letter-spacing:.08em;text-transform:uppercase;transition:background .22s}
+.btn-gold-fill:hover{background:var(--ink)}
+
+/* ══════════ FOOTER ══════════ */
+footer{background:var(--c1);border-top:1px solid var(--border);padding:72px 0 44px}
+.footer-grid{max-width:1280px;margin:0 auto;padding:0 72px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.fb-logo{font-family:Georgia,serif;font-size:18px;color:var(--ink);letter-spacing:.04em;margin-bottom:16px}
+.footer-grid .col-brand p{font-size:13px;color:var(--muted);line-height:1.85;max-width:260px}
+.footer-grid h5{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.footer-grid a{display:block;font-size:13px;color:var(--muted);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-grid a:hover{color:var(--ink)}
+.footer-bot{max-width:1280px;margin:0 auto;padding:24px 72px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.footer-bot p{font-size:12px;color:rgba(26,25,22,.35)}
+
+/* ══════════ PARTNER: MERLINIUM ══════════ */
+#partners{background:var(--white)}
+.partner-card{margin-top:64px;border:1px solid var(--border)}
+.partner-header{display:flex;align-items:center;gap:40px;padding:36px 44px;border-bottom:1px solid var(--border);background:var(--c0)}
+.partner-logo{height:48px;width:auto;object-fit:contain;flex-shrink:0}
+.pt-quote{font-family:Georgia,serif;font-size:15px;color:var(--ink);font-style:italic;margin-bottom:5px}
+.pt-sub{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.partner-body{display:grid;grid-template-columns:1fr 1.4fr;border-bottom:1px solid var(--border)}
+.partner-about{padding:40px 44px;border-right:1px solid var(--border)}
+.partner-about>p{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:32px}
+.partner-stats{display:grid;grid-template-columns:repeat(4,1fr)}
+.ps-item{text-align:center;padding:18px 10px;border:1px solid var(--border)}
+.ps-item+.ps-item{border-left:none}
+.ps-n{font-family:Georgia,serif;font-size:28px;color:var(--ink);line-height:1}
+.ps-n span{font-size:13px;color:var(--gold)}
+.ps-l{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.partner-products{padding:40px 44px}
+.pp-header{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.pp-grid{display:flex;flex-direction:column;gap:14px}
+.pp-card{border:1px solid var(--border);padding:20px 24px;background:var(--c0);transition:border-color .22s}
+.pp-card:hover{border-color:var(--border-gold)}
+.pp-model{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.pp-card h5{font-size:14px;color:var(--ink);margin-bottom:6px;font-family:Georgia,serif}
+.pp-card p{font-size:13px;color:var(--muted);line-height:1.75}
+.partner-integration{padding:32px 44px;background:var(--gold-light);border-top:1px solid var(--border-gold);display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center}
+.pi-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.partner-integration p{font-size:14px;color:var(--ink2);line-height:1.8}
+.partner-cta{display:inline-flex;align-items:center;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border-gold);padding:11px 22px;white-space:nowrap;transition:all .22s}
+.partner-cta:hover{background:var(--gold);color:var(--white)}
+.partner-sectors{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.sector-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--muted);background:var(--white)}
+
+/* ══════════ SLIDE IMAGES ══════════ */
+.slide-img{display:block;width:100%;border:1px solid var(--border);box-shadow:var(--shadow-lg);border-radius:2px}
+.slide-frame{margin-top:52px;position:relative}
+.slide-frame .sf-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.slide-frame .sf-label::before{content:'';width:20px;height:1px;background:var(--border)}
+.slide-2col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
+.slide-2col .sf-label{margin-bottom:8px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Deck gallery */
+#deck{background:var(--c1)}
+.deck-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.deck-item{position:relative;cursor:pointer;overflow:hidden;border:1px solid var(--border);transition:box-shadow .25s,border-color .25s}
+.deck-item:hover{border-color:var(--border-gold);box-shadow:var(--shadow-lg)}
+.deck-item img{display:block;width:100%;height:auto;transition:transform .3s}
+.deck-item:hover img{transform:scale(1.02)}
+.deck-caption{padding:12px 14px;background:var(--white);border-top:1px solid var(--border)}
+.deck-caption p{font-size:11px;color:var(--muted);letter-spacing:.04em}
+
+/* Lightbox */
+#lb{display:none;position:fixed;inset:0;z-index:999;background:rgba(26,25,22,.88);align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+#lb.open{display:flex}
+#lb img{max-width:90vw;max-height:88vh;box-shadow:0 24px 80px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.12)}
+#lb-close{position:absolute;top:24px;right:28px;color:rgba(255,255,255,.7);font-size:28px;cursor:pointer;line-height:1;background:none;border:none;font-family:inherit;transition:color .2s}
+#lb-close:hover{color:#fff}
+#lb-prev,#lb-next{position:absolute;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.6);font-size:36px;cursor:pointer;background:none;border:none;font-family:inherit;padding:12px;transition:color .2s;line-height:1}
+#lb-prev{left:16px}#lb-next{right:16px}
+#lb-prev:hover,#lb-next:hover{color:#fff}
+#lb-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.1em}
+
+/* ══════════ REVEAL ══════════ */
+.r{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94)}
+.r.on{opacity:1;transform:none}
+.r1{transition-delay:.08s}.r2{transition-delay:.16s}.r3{transition-delay:.24s}.r4{transition-delay:.32s}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:1080px){
+  nav{padding:16px 32px}
+  .hero-wrap,.container,.stats-grid,.footer-grid{padding-left:32px;padding-right:32px}
+  .footer-bot{padding:24px 32px 0}
+  .hero-viz{display:none}
+  .hero-wrap{grid-template-columns:1fr}
+  .chal-grid,.tech-intro,.flywheel-wrap,.brand-grid,.global-grid,.agrichain,.crisp-grid,.molecular,.partner-body{grid-template-columns:1fr}
+  .partner-body .partner-about{border-right:none;border-bottom:1px solid var(--border)}
+  .partner-integration{grid-template-columns:1fr;gap:20px}
+  .partner-header{flex-direction:column;align-items:flex-start;gap:20px}
+  .pillar-grid{grid-template-columns:1fr 1fr}
+  .hub-grid{grid-template-columns:1fr 1fr}
+  .outcomes-grid{grid-template-columns:1fr 1fr}
+  .fair-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .id-cards{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  .hero-wrap,.container,.stats-grid,.footer-grid{padding-left:20px;padding-right:20px}
+  .footer-bot{padding:20px 20px 0;flex-direction:column;gap:8px;text-align:center}
+  .pillar-grid,.hub-grid,.outcomes-grid,.fair-grid,.agrichain,.crisp-grid{grid-template-columns:1fr}
+  .stake-matrix{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+      <ellipse cx="13" cy="16" rx="5.5" ry="8" stroke="#A67C2E" stroke-width="1.1"/>
+      <circle cx="13" cy="7" r="2.8" stroke="#3D6B52" stroke-width="1.1"/>
+      <circle cx="20" cy="4" r="1.8" fill="#A67C2E" opacity=".75"/>
+      <line x1="13" y1="7" x2="20" y2="4" stroke="#A67C2E" stroke-width=".7" stroke-dasharray="2 1.5" opacity=".7"/>
+      <circle cx="22" cy="9" r="1.5" fill="#3D6B52" opacity=".7"/>
+      <line x1="20" y1="4" x2="22" y2="9" stroke="#3D6B52" stroke-width=".7" stroke-dasharray="2 1.5" opacity=".6"/>
+    </svg>
+    Producer Co.
+  </a>
+  <ul class="nav-links">
+    <li><a href="#challenge">Challenge</a></li>
+    <li><a href="#pillars">Pillars</a></li>
+    <li><a href="#technology">Technology</a></li>
+    <li><a href="#outcomes">Outcomes</a></li>
+    <li><a href="#deck">Deck</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#global">Global</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Partner With Us</a>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section id="hero">
+  <div class="hero-wrap">
+    <div>
+      <p class="hero-pre">Digital Ecosystems for Global Agriculture</p>
+      <h1 class="hero-title">Designing the<br>Architecture<br>from <em>Surface</em><br>to <em>Seed</em></h1>
+      <p class="hero-desc">Producer Co. builds complete digital ecosystems for agricultural transformation — from corporate identity and UX strategy to satellite intelligence, genomic science, and blockchain governance.</p>
+      <div class="hero-btns">
+        <a href="#challenge" class="btn-fill">Explore the Architecture</a>
+        <a href="#outcomes" class="btn-line">View Outcomes →</a>
+      </div>
+    </div>
+    <div class="hero-viz">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px">
+        <g class="hero-ring">
+          <circle cx="200" cy="200" r="176" stroke="#A67C2E" stroke-width=".6" stroke-dasharray="1 11" opacity=".5"/>
+          <circle cx="200" cy="200" r="148" stroke="rgba(26,25,22,.06)" stroke-width="1"/>
+        </g>
+        <g class="hero-core">
+          <ellipse cx="200" cy="222" rx="36" ry="52" stroke="#6B5240" stroke-width="1.3" opacity=".65"/>
+          <ellipse cx="200" cy="222" rx="20" ry="34" stroke="#6B5240" stroke-width=".7" opacity=".3" stroke-dasharray="3 3"/>
+          <line x1="200" y1="170" x2="200" y2="274" stroke="#6B5240" stroke-width=".7" opacity=".3"/>
+          <circle cx="200" cy="148" r="7" fill="#A67C2E" opacity=".88"/>
+          <circle cx="200" cy="148" r="18" stroke="#A67C2E" stroke-width=".6" opacity=".25" stroke-dasharray="2 3"/>
+          <circle cx="272" cy="110" r="5.5" fill="#3D6B52" opacity=".8"/>
+          <circle cx="316" cy="174" r="4.5" fill="#A67C2E" opacity=".7"/>
+          <circle cx="286" cy="284" r="4" fill="#3D6B52" opacity=".65"/>
+          <circle cx="118" cy="116" r="4.5" fill="#3D6B52" opacity=".7"/>
+          <circle cx="82" cy="198" r="4" fill="#A67C2E" opacity=".6"/>
+          <line x1="200" y1="148" x2="272" y2="110" stroke="#A67C2E" stroke-width=".9" opacity=".35"/>
+          <line x1="200" y1="148" x2="316" y2="174" stroke="#3D6B52" stroke-width=".8" opacity=".3"/>
+          <line x1="200" y1="148" x2="118" y2="116" stroke="#3D6B52" stroke-width=".8" opacity=".35"/>
+          <line x1="200" y1="148" x2="82" y2="198" stroke="#A67C2E" stroke-width=".7" opacity=".28"/>
+          <line x1="272" y1="110" x2="316" y2="174" stroke="#3D6B52" stroke-width=".6" opacity=".25"/>
+          <path d="M200 274 C186 294 170 306 156 322" stroke="#3D6B52" stroke-width=".9" opacity=".3"/>
+          <path d="M200 274 C214 294 230 306 244 320" stroke="#3D6B52" stroke-width=".9" opacity=".3"/>
+          <path d="M200 274 C200 300 194 318 188 340" stroke="#6B5240" stroke-width=".8" opacity=".25"/>
+        </g>
+        <text font-family="Georgia,serif" font-size="8.5" fill="#A67C2E" opacity=".5" letter-spacing="3.5">
+          <textPath href="#rp" startOffset="6%">PRODUCER CO. · GLOBAL AGRICULTURE · SURFACE TO SEED · DIGITAL ECOSYSTEMS ·</textPath>
+        </text>
+        <defs><path id="rp" d="M200,26 a174,174 0 1,1 -0.1,0 Z"/></defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ MARQUEE ════════ -->
+<div class="marquee">
+  <div class="marquee-inner">
+    <span class="mq-item"><span class="mq-dot"></span>CRISP Pipeline</span>
+    <span class="mq-item"><span class="mq-dot"></span>Global Rice Array</span>
+    <span class="mq-item"><span class="mq-dot"></span>SRP Standards</span>
+    <span class="mq-item"><span class="mq-dot"></span>BCG Model Thailand</span>
+    <span class="mq-item"><span class="mq-dot"></span>UN Global Marketplace</span>
+    <span class="mq-item"><span class="mq-dot"></span>STNSM Initiative</span>
+    <span class="mq-item"><span class="mq-dot"></span>FAIR Governance</span>
+    <span class="mq-item"><span class="mq-dot"></span>AgriChain Nexus</span>
+    <span class="mq-item"><span class="mq-dot"></span>Digital MRV</span>
+    <span class="mq-item"><span class="mq-dot"></span>CRISPR / Cas9</span>
+    <span class="mq-item"><span class="mq-dot"></span>Blockchain Traceability</span>
+    <span class="mq-item"><span class="mq-dot"></span>ESG &amp; SDG 17</span>
+    <span class="mq-item"><span class="mq-dot"></span>CRISP Pipeline</span>
+    <span class="mq-item"><span class="mq-dot"></span>Global Rice Array</span>
+    <span class="mq-item"><span class="mq-dot"></span>SRP Standards</span>
+    <span class="mq-item"><span class="mq-dot"></span>BCG Model Thailand</span>
+    <span class="mq-item"><span class="mq-dot"></span>UN Global Marketplace</span>
+    <span class="mq-item"><span class="mq-dot"></span>STNSM Initiative</span>
+    <span class="mq-item"><span class="mq-dot"></span>FAIR Governance</span>
+    <span class="mq-item"><span class="mq-dot"></span>AgriChain Nexus</span>
+    <span class="mq-item"><span class="mq-dot"></span>Digital MRV</span>
+    <span class="mq-item"><span class="mq-dot"></span>CRISPR / Cas9</span>
+    <span class="mq-item"><span class="mq-dot"></span>Blockchain Traceability</span>
+    <span class="mq-item"><span class="mq-dot"></span>ESG &amp; SDG 17</span>
+  </div>
+</div>
+
+<!-- ════════ STATS ════════ -->
+<div class="stats-row">
+  <div class="stats-grid">
+    <div class="stat-box r"><div class="stat-n">>90<b>%</b></div><div class="stat-l">Satellite Mapping Accuracy</div></div>
+    <div class="stat-box r r1"><div class="stat-n">3.17<b>B</b></div><div class="stat-l">Field Polygons Covered</div></div>
+    <div class="stat-box r r2"><div class="stat-n">−50<b>%</b></div><div class="stat-l">Methane Emissions via AWD</div></div>
+    <div class="stat-box r r3"><div class="stat-n">60<b>%</b></div><div class="stat-l">GHG Footprint Reduction</div></div>
+  </div>
+</div>
+
+<!-- ════════ CHALLENGE ════════ -->
+<section id="challenge">
+  <div class="container">
+    <p class="eyebrow r">The Challenge</p>
+    <h2 class="sec-h r">Agriculture is shifting from industrial<br>scale to digital resilience</h2>
+    <div class="chal-grid">
+      <div class="chal-cards">
+        <div class="chal-card r">
+          <h4>Industrial Legacy Model</h4>
+          <p>The legacy model prioritized massive caloric output for a growing population. For crops like rice — the primary caloric source for over half the globe — this model is no longer climatically viable. Linear, fragile, and blind to ecological complexity.</p>
+        </div>
+        <div class="chal-card r r1">
+          <h4>Digital-First Paradigm</h4>
+          <p>The modern paradigm relies on continuous, precision data loops to navigate climate uncertainty — ensuring both sustainability and food security at planetary scale. Real-time, adaptive, and globally integrated.</p>
+          <span class="pill">Climate Data</span><span class="pill">Field Sensors</span><span class="pill">Satellite Imagery</span><span class="pill">AI Analytics</span>
+        </div>
+        <div class="chal-card r r2">
+          <h4>SRP Gap Analysis — Moving Beyond Voluntary Standards</h4>
+          <div class="gap-table" style="margin-top:14px">
+            <div class="gap-row"><span>Landscape-Level Governance</span><span class="badge-gap">Gap</span></div>
+            <div class="gap-row"><span>Social Safeguard Protocols (ILO 48h)</span><span class="badge-gap">Gap</span></div>
+            <div class="gap-row"><span>Processing Scope &amp; Energy Efficiency</span><span class="badge-gap">Gap</span></div>
+            <div class="gap-row"><span>Nature-Related Disclosures (TNFD)</span><span class="badge-gap">Gap</span></div>
+            <div class="gap-row"><span>UNESCAP-AFMA Integration Framework</span><span class="badge-ok">Solved</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="r r1">
+        <div class="pullquote">
+          <p>"To transform agriculture, technological intervention must be seamlessly integrated with digital communication. We must design every layer of the stack."</p>
+          <cite>Producer Co. — Architecture Manifesto</cite>
+        </div>
+        <div class="pullquote" style="background:var(--gold-light);border-left-color:var(--sage)">
+          <p>"The unified architecture is not a linear stack; it is a continuous flywheel of transformation — bridging human intent and computational science."</p>
+          <cite>Surface to Seed · Research Framework, 2025</cite>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-frame r">
+      <div class="sf-label">Industrial Legacy vs. Digital-First Paradigm</div>
+      <img src="slide-02.jpg" alt="Agriculture shifting from industrial scale to digital resilience" class="slide-img">
+    </div>
+  </div>
+</section>
+
+<!-- ════════ STAKEHOLDERS ════════ -->
+<section id="stakeholders">
+  <div class="container">
+    <p class="eyebrow r">Content Architecture</p>
+    <h2 class="sec-h r">Bridging complex science<br>with ground-level adoption</h2>
+    <p class="sec-p r">The digital interface must serve four fundamentally different stakeholders — each with distinct needs, data requirements, and interfaces.</p>
+    <div class="stake-matrix r" style="margin-top:48px">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th class="col-sci">Breeding Scientists</th>
+            <th class="col-pol">National Policymakers</th>
+            <th class="col-agr">Agribusinesses</th>
+            <th class="col-ext">Extension Services</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Core Need</td>
+            <td>Genomic markers &amp; phenotypic data</td>
+            <td>High-level risk assessments</td>
+            <td>Supply chain resilience data</td>
+            <td>Localized best practices</td>
+          </tr>
+          <tr>
+            <td>Technical Need</td>
+            <td>Deep-dive hubs for ORYZA2000 models &amp; Global Rice Array</td>
+            <td>Dynamic data portals with yield forecasts</td>
+            <td>Dashboards proving ROI &amp; blockchain-based metrics</td>
+            <td>Highly accessible, mobile-friendly interfaces</td>
+          </tr>
+          <tr>
+            <td>Interface</td>
+            <td>CRISP-integrated scientific dashboards</td>
+            <td>CRISP yield forecast platforms</td>
+            <td>Blockchain traceability metrics &amp; ROI visualization</td>
+            <td>Climate-resilient mobile training materials</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="slide-frame r">
+      <div class="sf-label">Stakeholder Content Architecture Matrix</div>
+      <img src="slide-06.jpg" alt="Content architecture bridging science and ground-level adoption" class="slide-img">
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOUR PILLARS ════════ -->
+<section id="pillars">
+  <div class="container">
+    <p class="eyebrow r">Digital Interface Structure</p>
+    <h2 class="sec-h r">Four core pillars of<br>agricultural transformation</h2>
+    <p class="sec-p r">Structuring the digital interface around the domains that matter most — each pillar is a distinct knowledge layer serving a distinct audience.</p>
+    <div class="pillar-grid r">
+      <div class="pillar p1">
+        <div class="pillar-icon">🛰</div>
+        <div class="pillar-tag">Earth Observation</div>
+        <h3>Orbital Intelligence</h3>
+        <p>Dynamic maps utilizing multi-temporal Sentinel-1 and -2 data to generate seasonal yield models via CRISP. Near-real-time field monitoring at continental scale.</p>
+        <div class="pillar-line"></div>
+      </div>
+      <div class="pillar p2">
+        <div class="pillar-icon">🧬</div>
+        <div class="pillar-tag">Genomic Diversity</div>
+        <h3>Biological Intelligence</h3>
+        <p>Scientific narratives detailing the Global Rice Array's acceleration of gene discovery for diverse environments. CRISPR-enabled germplasm engineering for climate volatility.</p>
+        <div class="pillar-line"></div>
+      </div>
+      <div class="pillar p3">
+        <div class="pillar-icon">🌱</div>
+        <div class="pillar-tag">Climate-Smart Agriculture</div>
+        <h3>Sustainability Science</h3>
+        <p>Case studies validating sustainability targets — including REMET-Rice methane reduction programs, AWD irrigation, and Direct Seeded Rice for GHG abatement.</p>
+        <div class="pillar-line"></div>
+      </div>
+      <div class="pillar p4">
+        <div class="pillar-icon">⛓</div>
+        <div class="pillar-tag">Digital Supply Chains</div>
+        <h3>Trust Architecture</h3>
+        <p>Documentation on traceability, blockchain integration, and AI-driven market intelligence for agribusiness. End-to-end supply chain transparency for international buyers.</p>
+        <div class="pillar-line"></div>
+      </div>
+    </div>
+
+    <div class="slide-frame r">
+      <div class="sf-label">Four Core Pillars of Agricultural Transformation</div>
+      <img src="slide-07.jpg" alt="Four core pillars: Earth Observation, Genomic Diversity, Climate-Smart, Digital Supply Chains" class="slide-img">
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FLYWHEEL ════════ -->
+<section id="flywheel">
+  <div class="container">
+    <p class="eyebrow r">The Unified Architecture</p>
+    <h2 class="sec-h r">A continuous flywheel<br>of transformation</h2>
+    <p class="sec-p r">The architecture is not linear. Each layer feeds the next in a reinforcing cycle — data feeds science, science feeds narrative, narrative builds trust, trust generates more data.</p>
+    <div class="flywheel-wrap">
+      <div class="flywheel-steps r">
+        <div class="fw-step">
+          <div class="fw-num">01</div>
+          <div>
+            <h4>FAIR Data Infrastructure</h4>
+            <p>Feeds clean, reliable, findable inputs to the AI and genomic engines. Kubernetes containerization processes 3.17B field polygons at 10m resolution.</p>
+          </div>
+        </div>
+        <div class="fw-step">
+          <div class="fw-num">02</div>
+          <div>
+            <h4>AI &amp; Genomic Engines</h4>
+            <p>CRISP pipeline and Global Rice Array generate localized insights — crop yield predictions, genomic markers, and climate-adaptive germplasm profiles — that populate the interface.</p>
+          </div>
+        </div>
+        <div class="fw-step">
+          <div class="fw-num">03</div>
+          <div>
+            <h4>Website Interface</h4>
+            <p>Provides clear narrative evidence tailored to four stakeholder groups. Translates orbital and genomic data into actionable intelligence for farmers, scientists, policymakers, and agribusiness.</p>
+          </div>
+        </div>
+        <div class="fw-step">
+          <div class="fw-num">04</div>
+          <div>
+            <h4>Brand Trust &amp; Institutional Authority</h4>
+            <p>Secures multi-stakeholder partnerships necessary to generate more field data. UN, FAO, AFMA, and government endorsements feed back into data collection at scale.</p>
+          </div>
+        </div>
+      </div>
+      <div class="fw-center r r1">
+        <div class="fc-label">The Continuous Loop</div>
+        <p>"This continuous loop bridges human intent and computational science — turning planetary data into farmer prosperity."</p>
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:140px;margin:28px auto 0;display:block">
+          <circle cx="100" cy="100" r="70" stroke="#A67C2E" stroke-width="1.2" stroke-dasharray="4 6" opacity=".4"/>
+          <path d="M100 32 A68 68 0 1 1 32 100" stroke="#A67C2E" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
+          <polygon points="100,24 108,40 92,40" fill="#A67C2E" opacity=".7"/>
+          <circle cx="100" cy="100" r="18" fill="#F5EDD6" stroke="#A67C2E" stroke-width="1"/>
+          <text x="100" y="104" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#A67C2E">LOOP</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="slide-frame r">
+      <div class="sf-label">The Unified Architecture: Continuous Flywheel of Transformation</div>
+      <img src="slide-14.jpg" alt="Unified Architecture flywheel: FAIR Data → AI Engines → Website Interface → Brand Trust" class="slide-img">
+    </div>
+  </div>
+</section>
+
+<!-- ════════ TECHNOLOGY ════════ -->
+<section id="technology">
+  <div class="container">
+    <p class="eyebrow r">Core Technology</p>
+    <h2 class="sec-h r">Convergence of orbital and<br>biological intelligence</h2>
+    <div class="tech-intro r">
+      <p class="sec-p" style="max-width:none">From raw satellite backscatter to root-zone soil moisture models, from fragmented IoT telemetry to a unified Agri-Object hub, from genomic markers to CRISPR-engineered germplasm — Producer Co. designs the full technical stack.</p>
+      <div style="border:1px solid var(--border-gold);background:var(--gold-light);padding:28px 30px">
+        <p style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Key Principle</p>
+        <p style="font-family:Georgia,serif;font-size:16px;line-height:1.65;color:var(--ink);font-style:italic">"Distilling planetary noise into actionable agricultural intelligence."</p>
+      </div>
+    </div>
+
+    <!-- DATA LEVELS -->
+    <div class="sec-divide r"><span>Data Processing Pipeline</span></div>
+    <div class="levels r">
+      <div class="level-row">
+        <div class="level-step"><div class="ls-num">L1</div><div class="ls-label">Raw</div></div>
+        <div class="level-content"><h4>Calibrated Surface Measurements</h4><p>Calibrated and geolocated measurements of surface radar backscatter and brightness temperatures from Sentinel-1/2 and Planet satellite constellations.</p></div>
+      </div>
+      <div class="level-row">
+        <div class="level-step"><div class="ls-num">L2</div><div class="ls-label">Grid</div></div>
+        <div class="level-content"><h4>Geophysical Retrievals</h4><p>Soil moisture mapped onto a fixed Earth grid at 3 km to 36 km resolution. Standardized geophysical parameters ready for model ingestion.</p></div>
+      </div>
+      <div class="level-row">
+        <div class="level-step"><div class="ls-num">L3</div><div class="ls-label">Global</div></div>
+        <div class="level-content"><h4>Daily Global Composites</h4><p>Daily global composites providing a total planetary view for a complete 24-hour cycle. Near-real-time crop monitoring at continental scale.</p></div>
+      </div>
+      <div class="level-row">
+        <div class="level-step"><div class="ls-num">L4</div><div class="ls-label">Strategic</div></div>
+        <div class="level-content"><h4>Model-Derived Intelligence</h4><p>Value-added products merging satellite observations with land surface models to estimate vital root-zone soil moisture and generate seasonal yield forecasts.</p></div>
+      </div>
+    </div>
+
+    <div class="slide-frame r">
+      <div class="sf-label">Distilling Planetary Noise into Actionable Agricultural Intelligence</div>
+      <img src="slide-10.jpg" alt="Data processing pipeline: L1 Raw → L2 Grid → L3 Global → L4 Strategic" class="slide-img">
+    </div>
+
+    <!-- AGRI-OBJECT HUB -->
+    <div class="sec-divide r"><span>Agri-Object Model Integration Hub</span></div>
+    <p class="r" style="font-size:15px;color:var(--muted);max-width:640px;line-height:1.85;margin-bottom:0">Cloud-native pipelines unify fragmented field telemetry from four data streams into a single, authoritative source of truth for all downstream analysis.</p>
+    <div class="hub-grid r">
+      <div class="hub-card">
+        <div class="hub-icon">📡</div>
+        <h4>In-Field Sensors</h4>
+        <p>IoT devices capturing granular soil moisture and temperature metrics at the plot level. PVC monitoring pipes providing continuous telemetry.</p>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🛰</div>
+        <h4>Remote Sensing</h4>
+        <p>High-frequency imagery from satellite constellations — Sentinel-1, Sentinel-2, and Planet — providing multi-temporal surface observations.</p>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🚜</div>
+        <h4>Mechanical Data</h4>
+        <p>Continuous telemetry and operational logs from automated farm machinery. Real-time input tracking for resource optimization models.</p>
+      </div>
+      <div class="hub-card">
+        <div class="hub-icon">🌦</div>
+        <h4>Environmental Data</h4>
+        <p>Integration of real-time weather feeds and long-term climate predictive models. Regional and global climate scenario integration.</p>
+      </div>
+    </div>
+
+    <div class="slide-frame r">
+      <div class="sf-label">Cloud-Native Pipelines: Agri-Object Model Integration Hub</div>
+      <img src="slide-11.jpg" alt="Agri-Object Hub: IoT Sensors, Remote Sensing, Mechanical Data, Environmental Data" class="slide-img">
+    </div>
+
+    <!-- AGRICHAIN NEXUS -->
+    <div class="sec-divide r"><span>AgriChain Nexus — AI + Blockchain</span></div>
+    <div class="agrichain r">
+      <div class="ag-card">
+        <div class="ag-tag">Optimization via AI</div>
+        <h3>Graph Neural Networks &amp; MARL</h3>
+        <p>Graph Neural Networks (GNNs) model spatial and temporal market interactions to achieve ~90% crop yield prediction accuracy. Multi-Agent Reinforcement Learning (MARL) empowers autonomous agents to discover optimal planting strategies — increasing farmer income by up to 30% and cutting supply chain costs by 20%.</p>
+        <div class="ag-metric"><div class="am-n">~90%</div><div class="am-l">Crop yield prediction<br>accuracy via GNN</div></div>
+      </div>
+      <div class="ag-card">
+        <div class="ag-tag">Verification via Blockchain</div>
+        <h3>Decentralized Trust &amp; Smart Contracts</h3>
+        <p>Smart contracts automate transparent data exchange, eliminating intermediaries and ensuring end-to-end traceability for safety certifications. Immutable records provide the verification backbone for carbon credits, ESG reporting, and international procurement. Each transaction timestamped and hash-verified.</p>
+        <div class="ag-metric"><div class="am-n">100%</div><div class="am-l">Tamper-proof traceability<br>for safety certifications</div></div>
+      </div>
+    </div>
+
+    <!-- FAIR GOVERNANCE -->
+    <div class="sec-divide r"><span>FAIR Governance &amp; Edge-Cloud Orchestration</span></div>
+    <p class="r" style="font-size:15px;color:var(--muted);max-width:640px;line-height:1.85;margin-bottom:0">Managing planetary scale requires data governance that is Findable, Accessible, Interoperable, and Reusable — enforced by institutional data custodians and edge-native AI.</p>
+    <div class="fair-grid r">
+      <div class="fair-card">
+        <div class="fair-letter">F</div>
+        <h4>Findable</h4>
+        <p>Data assigned persistent identifiers. Metadata registered in searchable resources across IRRI DESK, FAO, and institutional data catalogues.</p>
+      </div>
+      <div class="fair-card">
+        <div class="fair-letter">A</div>
+        <h4>Accessible</h4>
+        <p>Data retrievable via standardized protocols. Open access where possible; secure access for sensitive genomic and commercial datasets.</p>
+      </div>
+      <div class="fair-card">
+        <div class="fair-letter">I</div>
+        <h4>Interoperable</h4>
+        <p>AGRARIAN hybrid architecture: federated AI at the edge (local sensors) reducing reliance on continuous cloud connectivity in remote rural settings.</p>
+      </div>
+      <div class="fair-card">
+        <div class="fair-letter">R</div>
+        <h4>Reusable</h4>
+        <p>Kubernetes containerization and microservices ensure fault isolation. Processing 3.17B remote-sensing field polygons at 10m resolution without downtime.</p>
+      </div>
+    </div>
+
+    <!-- CRISP + RICE ARRAY -->
+    <div class="sec-divide r"><span>CRISP Pipeline &amp; Global Rice Array</span></div>
+    <div class="crisp-grid r">
+      <div class="crisp-card">
+        <div class="crisp-tag">CRISP Pipeline</div>
+        <h3>Cloud-Native Earth Observation</h3>
+        <p>Replaces post-harvest static reporting with near-real-time dynamic analysis. Achieves >90% mapping accuracy in structured irrigation schemes and >80% reliability in highly fragmented ecosystems like Kano, Nigeria. Multi-temporal Sentinel-1 and -2 data generating seasonal yield models at field scale.</p>
+        <div class="crisp-stat"><div class="cs-n">>90%</div><div class="cs-l">Mapping accuracy in structured irrigation</div></div>
+      </div>
+      <div class="crisp-card">
+        <div class="crisp-tag">FP4 · Global Rice Array</div>
+        <h3>Worldwide Field Phenotyping</h3>
+        <p>A worldwide network of high-throughput field phenotyping sites deploying diagnostic populations as biological antennae — sensing changing climates through the eye of the crop itself. Accelerates gene discovery for diverse environments, targeting varieties capable of maintaining stable yields during climate extremes.</p>
+        <div class="crisp-stat"><div class="cs-n">3.17B</div><div class="cs-l">Field polygons analyzed at 10m resolution</div></div>
+      </div>
+    </div>
+
+    <div class="slide-frame r">
+      <div class="sf-label">Convergence of Orbital and Biological Intelligence</div>
+      <img src="slide-08.jpg" alt="CRISP Pipeline and Global Rice Array: orbital and biological intelligence" class="slide-img">
+    </div>
+
+    <!-- MOLECULAR -->
+    <div class="sec-divide r"><span>Molecular Engineering &amp; Ideal Plant Architecture</span></div>
+    <div class="molecular r">
+      <div class="mol-main">
+        <h3>CRISPR/Cas9 for Climate-Resilient Germplasm</h3>
+        <p>Agrobacterium-mediated transformation utilizes CRISPR/Cas9 to create novel germplasms capable of withstanding severe climate volatility. The Ideal Plant Architecture (IPA) framework optimizes tiller development, root depth, and photosynthetic efficiency simultaneously.</p>
+        <div class="mol-gene">
+          <h4>The OsCCD7 Gene</h4>
+          <p>Research targets genes like OsCCD7 to regulate tiller development. Understanding this relationship allows breeders to synergize stress tolerance with photosynthetic efficiency — creating super-rice that maintains stable yields during floods, droughts, and natural disasters.</p>
+        </div>
+      </div>
+      <div class="mol-side">
+        <div class="mol-point">
+          <h5>ORYZA2000 Models</h5>
+          <p>Process-based crop models calibrated to local conditions. Deep-dive hubs for breeding scientists requiring phenotypic data at genomic resolution.</p>
+        </div>
+        <div class="mol-point">
+          <h5>Gene Discovery Acceleration</h5>
+          <p>High-throughput phenotyping platforms accelerate the identification of climate-adaptive traits across the full genetic diversity of global rice germplasm.</p>
+        </div>
+        <div class="mol-point">
+          <h5>Stress Tolerance Synergy</h5>
+          <p>Novel germplasms bred for simultaneous tolerance to flooding, drought, heat, and submergence — critical for fragile delta and lowland ecosystems.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-frame r">
+      <div class="sf-label">Molecular Engineering: Ideal Plant Architecture for Fragile Ecosystems</div>
+      <img src="slide-09.jpg" alt="CRISPR/Cas9 and OsCCD7 gene for climate-resilient germplasm" class="slide-img">
+    </div>
+  </div>
+</section>
+
+<!-- ════════ OUTCOMES ════════ -->
+<section id="outcomes">
+  <div class="container">
+    <p class="eyebrow r">Return on Architecture</p>
+    <h2 class="sec-h r">High-value outcomes for<br>global agriculture</h2>
+    <p class="sec-p r">Every layer of the ecosystem delivers measurable, compounding impact — from the satellite to the smallholder farmer.</p>
+    <div class="outcomes-grid">
+      <div class="oc-card r">
+        <div class="oc-n">01</div>
+        <h3>Yield Certainty</h3>
+        <p>Satellite time-series and predictive modelling de-risk global sourcing and stabilise supply chains facing climate volatility. 20% reduction in supply chain disruption via blockchain transparency.</p>
+        <div class="oc-bar"></div>
+      </div>
+      <div class="oc-card r r1">
+        <div class="oc-n">02</div>
+        <h3>Operational Efficiency</h3>
+        <p>Optimising critical resource usage — water, fertiliser, labour — through precision field scouting and automated AI advisories. 20% reduction in water usage via AWD resource management.</p>
+        <div class="oc-bar"></div>
+      </div>
+      <div class="oc-card r r2">
+        <div class="oc-n">03</div>
+        <h3>Sustainability &amp; MRV</h3>
+        <p>Rigorous, immutable data for measurement, reporting, and verification of climate conservation programs. 30–53% methane reduction via AWD. 60% total GHG footprint reduction using Direct Seeded Rice.</p>
+        <div class="oc-bar"></div>
+      </div>
+      <div class="oc-card r r3">
+        <div class="oc-n">04</div>
+        <h3>Enhanced Livelihoods</h3>
+        <p>AI-driven insights protecting smallholder farmers from market volatility — income increase of 10–20% through direct B2B ESG market access. 30% income increase via MARL-optimised planting strategies.</p>
+        <div class="oc-bar"></div>
+      </div>
+    </div>
+
+    <div class="slide-frame r">
+      <div class="sf-label">Return on Architecture: High-Value Outcomes for Global Agriculture</div>
+      <img src="slide-15.jpg" alt="Yield Certainty, Operational Efficiency, Sustainability & MRV, Enhanced Livelihoods" class="slide-img">
+    </div>
+  </div>
+</section>
+
+<!-- ════════ BRAND IDENTITY ════════ -->
+<section id="brand">
+  <div class="container">
+    <p class="eyebrow r">Brand Design System</p>
+    <h2 class="sec-h r">Corporate identity is a strategic<br>enabler for the global license to operate</h2>
+    <div class="brand-grid">
+      <div class="id-cards r">
+        <div class="id-card">
+          <h4>Core Symbolism</h4>
+          <p>Connects the Green Revolution legacy to future-ready innovation. The seed-network motif bridges biological heritage and digital intelligence across cultures.</p>
+        </div>
+        <div class="id-card">
+          <h4>Visual Palette</h4>
+          <p>Grounds high-tech computational solutions in the natural environment — sky blue, soil brown, and leaf green.</p>
+          <div class="pal">
+            <div class="pdot" style="background:#3A7FA8" title="Sky Blue"></div>
+            <div class="pdot" style="background:#6B5240" title="Soil Brown"></div>
+            <div class="pdot" style="background:#3D6B52" title="Sage Green"></div>
+            <div class="pdot" style="background:#A67C2E" title="Gold"></div>
+          </div>
+        </div>
+        <div class="id-card">
+          <h4>Functional Iconography</h4>
+          <p>Visual shorthand for carbon sequestration, pest risk, water stress, and yield potential — communicating across any language and literacy level.</p>
+        </div>
+        <div class="id-card">
+          <h4>Typography Hierarchy</h4>
+          <p>Authoritative serif for research and institutional communication. Accessible sans-serif for digital tools and farmer-facing platforms.</p>
+          <div class="type-demo"><div class="td1">Research Data 2025</div><div class="td2">Crop Yield Analytics · SRP+</div></div>
+        </div>
+      </div>
+      <div class="brand-right r r1">
+        <div class="brand-statement">
+          <div class="bs-pre">Producer Co. · Brand Foundation</div>
+          <h2>From <em>Surface</em> to <em>Seed</em> —<br>designing the architecture<br>of global agriculture</h2>
+        </div>
+        <div class="shift-row">
+          <div class="shift-box">
+            <div class="sb-l">Before</div>
+            <div class="sb-t">Closed Vault<br><small style="font-size:11px;color:var(--muted)">Static genetic preservation</small></div>
+          </div>
+          <div class="shift-arrow">→</div>
+          <div class="shift-box" style="border-color:var(--border-gold);background:var(--gold-light)">
+            <div class="sb-l" style="color:var(--gold)">After</div>
+            <div class="sb-t" style="color:var(--gold)">Open Network<br><small style="font-size:11px;color:var(--earth)">Active collaborative sustainability</small></div>
+          </div>
+        </div>
+        <div style="border:1px solid var(--border);padding:26px 28px;background:var(--c0)">
+          <p style="font-family:Georgia,serif;font-size:14px;line-height:1.8;color:var(--ink2);font-style:italic">"Brand voice is no longer about static preservation; it is an advocacy-oriented rhetoric of active, collaborative sustainability — reflecting the shift from genetic preservation to open-source utilization."</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-2col r">
+      <div>
+        <div class="sf-label">Corporate Identity as Strategic Enabler</div>
+        <img src="slide-04.jpg" alt="Core symbolism, visual palettes, functional iconography, typography hierarchy" class="slide-img">
+      </div>
+      <div>
+        <div class="sf-label">Brand Symbolism: Genetic Preservation to Open-Source Utilization</div>
+        <img src="slide-05.jpg" alt="Shift from closed vault to open network: brand voice as advocacy" class="slide-img">
+      </div>
+    </div>
+    <div class="slide-frame r" style="margin-top:16px">
+      <div class="sf-label">The Ecosystem Stack: From Surface to Scientific Core</div>
+      <img src="slide-03.jpg" alt="4-layer ecosystem stack: Corporate Identity, Website UX, Scientific Intervention, Data Governance" class="slide-img">
+    </div>
+  </div>
+</section>
+
+<!-- ════════ GLOBAL ════════ -->
+<section id="global">
+  <div class="container">
+    <p class="eyebrow r">Global Reach</p>
+    <h2 class="sec-h r">Operating at planetary scale</h2>
+    <div class="global-grid">
+      <div class="r">
+        <svg viewBox="0 0 380 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px">
+          <circle cx="190" cy="180" r="148" stroke="rgba(26,25,22,.1)" stroke-width="1.2"/>
+          <circle cx="190" cy="180" r="148" fill="rgba(242,238,230,.5)"/>
+          <ellipse cx="190" cy="180" rx="148" ry="40" stroke="rgba(26,25,22,.06)" stroke-width=".8"/>
+          <ellipse cx="190" cy="180" rx="148" ry="90" stroke="rgba(26,25,22,.05)" stroke-width=".7"/>
+          <ellipse cx="190" cy="180" rx="148" ry="130" stroke="rgba(26,25,22,.04)" stroke-width=".7"/>
+          <line x1="190" y1="32" x2="190" y2="328" stroke="rgba(26,25,22,.06)" stroke-width=".8"/>
+          <ellipse cx="190" cy="180" rx="52" ry="148" stroke="rgba(26,25,22,.05)" stroke-width=".7"/>
+          <ellipse cx="190" cy="180" rx="104" ry="148" stroke="rgba(26,25,22,.04)" stroke-width=".7"/>
+          <!-- Asia-Pacific marker -->
+          <circle cx="270" cy="138" r="7" fill="#A67C2E"/>
+          <circle cx="270" cy="138" r="16" stroke="#A67C2E" stroke-width=".8" opacity=".3" stroke-dasharray="2 3"/>
+          <circle cx="270" cy="138" r="26" stroke="#A67C2E" stroke-width=".5" opacity=".12"/>
+          <!-- Sub-Saharan -->
+          <circle cx="168" cy="195" r="6" fill="#3D6B52"/>
+          <circle cx="168" cy="195" r="14" stroke="#3D6B52" stroke-width=".8" opacity=".3" stroke-dasharray="2 3"/>
+          <!-- West Africa -->
+          <circle cx="126" cy="162" r="5" fill="#A67C2E" opacity=".8"/>
+          <circle cx="126" cy="162" r="12" stroke="#A67C2E" stroke-width=".7" opacity=".25" stroke-dasharray="2 3"/>
+          <!-- South Asia -->
+          <circle cx="238" cy="172" r="4.5" fill="#3D6B52" opacity=".8"/>
+          <circle cx="294" cy="188" r="4" fill="#6B5240" opacity=".75"/>
+          <line x1="270" y1="138" x2="168" y2="195" stroke="#A67C2E" stroke-width=".8" opacity=".2"/>
+          <line x1="168" y1="195" x2="126" y2="162" stroke="#3D6B52" stroke-width=".7" opacity=".2"/>
+          <line x1="270" y1="138" x2="238" y2="172" stroke="#3D6B52" stroke-width=".7" opacity=".2"/>
+          <text x="278" y="133" fill="#A67C2E" font-size="9" font-family="Georgia,serif">Asia-Pacific</text>
+          <text x="170" y="212" fill="#3D6B52" font-size="9" font-family="Georgia,serif">Sub-Saharan</text>
+          <text x="80" y="159" fill="#A67C2E" font-size="9" font-family="Georgia,serif">West Africa</text>
+          <text x="190" y="300" text-anchor="middle" fill="rgba(26,25,22,.25)" font-size="8.5" font-family="Georgia,serif" letter-spacing=".8">PRODUCER CO. GLOBAL NETWORK</text>
+        </svg>
+      </div>
+      <div class="gp-list r r1">
+        <div class="gp-item">
+          <div class="gp-dot" style="background:#A67C2E"></div>
+          <div><h4>CRISP Pipeline · Asia-Pacific</h4><p>>90% satellite mapping accuracy in structured irrigation schemes across South and Southeast Asia's rice belts. Real-time crop monitoring replacing post-harvest static reports.</p></div>
+        </div>
+        <div class="gp-item">
+          <div class="gp-dot" style="background:#3D6B52"></div>
+          <div><h4>Field Phenotyping · Sub-Saharan Africa</h4><p>>80% mapping reliability in highly fragmented ecosystems like Kano, Nigeria. Diagnostic crop populations acting as biological climate sensors in remote rural settings.</p></div>
+        </div>
+        <div class="gp-item">
+          <div class="gp-dot" style="background:#6B5240"></div>
+          <div><h4>AFMA Network · 13 Nations</h4><p>Asia-Pacific Food Market Authority — 25 food market units across Thailand, China, India, and Vietnam. Est. 1983, backed by FAO &amp; UNESCAP. Gateway to the UN Global Marketplace.</p></div>
+        </div>
+        <div class="gp-item">
+          <div class="gp-dot" style="background:#A67C2E;opacity:.6"></div>
+          <div><h4>UN Global Marketplace · UNGM</h4><p>Certified sustainable suppliers gain first-hand access to large-scale UN procurement for humanitarian aid and regional food security. ESG-linked supplier financing reduces transition costs.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PARTNER: MERLINIUM ════════ -->
+<section id="partners">
+  <div class="container">
+    <p class="eyebrow r">Strategic Technology Partner</p>
+    <h2 class="sec-h r">IoT Intelligence at the<br>Field &amp; Factory Level</h2>
+    <p class="sec-p r">Producer Co. partners with Merlinium to deliver the physical IoT layer of the agricultural ecosystem — bringing predictive intelligence to the machines that process, store, and move the world's food supply.</p>
+
+    <div class="partner-card r">
+
+      <!-- Header -->
+      <div class="partner-header">
+        <img src="merlinium-logo.jpg" alt="Merlinium" class="partner-logo">
+        <div>
+          <p class="pt-quote">"Physics is more powerful than you think"</p>
+          <p class="pt-sub">Predictive Maintenance Sensor &amp; AI · merliniumiot.com</p>
+        </div>
+      </div>
+
+      <!-- Body: About + Products -->
+      <div class="partner-body">
+        <div class="partner-about">
+          <p>Merlinium develops AI-powered IoT sensors that monitor industrial machinery in real time — detecting mechanical and electrical anomalies before they cause costly breakdowns. With over 100 factory clients across Thailand's food, automotive, and construction sectors, Merlinium is the predictive intelligence backbone of modern agricultural supply chains.</p>
+          <div class="partner-stats">
+            <div class="ps-item">
+              <div class="ps-n">300<span>+</span></div>
+              <div class="ps-l">Sensors Deployed</div>
+            </div>
+            <div class="ps-item">
+              <div class="ps-n">100<span>+</span></div>
+              <div class="ps-l">Factory Clients</div>
+            </div>
+            <div class="ps-item">
+              <div class="ps-n">3<span>min</span></div>
+              <div class="ps-l">Installation Time</div>
+            </div>
+            <div class="ps-item">
+              <div class="ps-n">5<span>min</span></div>
+              <div class="ps-l">Data Refresh Rate</div>
+            </div>
+          </div>
+          <div class="partner-sectors" style="margin-top:24px">
+            <span class="sector-tag">Food &amp; Agriculture</span>
+            <span class="sector-tag">Automotive</span>
+            <span class="sector-tag">Construction</span>
+            <span class="sector-tag">Electronics</span>
+          </div>
+        </div>
+
+        <div class="partner-products">
+          <div class="pp-header">Product Suite</div>
+          <div class="pp-grid">
+            <div class="pp-card">
+              <div class="pp-model">TXTA221 — Mechanical Sensor + AI</div>
+              <h5>Vibration &amp; Temperature Intelligence</h5>
+              <p>Monitors motors, pumps, gearboxes, blowers, and all rotating machinery. Spectrum analysis with embedded AI detects bearing wear, misalignment, and imbalance. Battery-powered LoRa connectivity — no wiring required. IP-rated for indoor and outdoor agricultural environments.</p>
+            </div>
+            <div class="pp-card">
+              <div class="pp-model">TXC231 — Electrical Sensor + AI</div>
+              <h5>Current &amp; Power Quality Analysis</h5>
+              <p>Detects harmonic currents, phase unbalance, and electrical spikes across panels, solar arrays, inverters, boilers, and transformers. Up to 3 current probe inputs. Provides historical consumption data and real-time anomaly alerts — preventing short-circuit and fire risk in processing facilities.</p>
+            </div>
+            <div class="pp-card">
+              <div class="pp-model">GW221 — IoT Gateway &amp; Dashboard</div>
+              <h5>Cloud &amp; On-Premise Data Hub</h5>
+              <p>Aggregates all sensor data into a unified, real-time dashboard accessible on mobile, tablet, and desktop 24/7. Supports cloud server and on-premise deployment. Integrates via API into Producer Co.'s Agri-Object Hub for full supply chain visibility.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ecosystem integration bar -->
+      <div class="partner-integration">
+        <div class="pi-label">Ecosystem<br>Integration</div>
+        <p>Merlinium's machine telemetry feeds directly into Producer Co.'s <strong>Agri-Object Hub</strong> as the Mechanical Data stream — enabling predictive analytics across rice mills, irrigation pumps, drying equipment, and food processing plants throughout the global supply chain. When a sensor detects an anomaly, the signal propagates through the full FAIR Data Infrastructure, triggering automated maintenance scheduling before downtime occurs.</p>
+        <a href="https://merliniumiot.com" target="_blank" class="partner-cta">Visit Merlinium →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FULL DECK ════════ -->
+<section id="deck">
+  <div class="container">
+    <p class="eyebrow r">Research Deck</p>
+    <h2 class="sec-h r">Surface to Seed — Full Presentation</h2>
+    <p class="sec-p r">All 15 slides from the original research deck. Click any slide to view full size.</p>
+    <div class="deck-grid r">
+      <div class="deck-item" onclick="openLb(0)"><img src="slide-01.jpg" alt="Slide 01"><div class="deck-caption"><p>01 — Digital Ecosystems for Global Agricultural Transformation</p></div></div>
+      <div class="deck-item" onclick="openLb(1)"><img src="slide-02.jpg" alt="Slide 02"><div class="deck-caption"><p>02 — Industrial Scale to Digital Resilience</p></div></div>
+      <div class="deck-item" onclick="openLb(2)"><img src="slide-03.jpg" alt="Slide 03"><div class="deck-caption"><p>03 — The Ecosystem Stack</p></div></div>
+      <div class="deck-item" onclick="openLb(3)"><img src="slide-04.jpg" alt="Slide 04"><div class="deck-caption"><p>04 — Corporate Identity as Strategic Enabler</p></div></div>
+      <div class="deck-item" onclick="openLb(4)"><img src="slide-05.jpg" alt="Slide 05"><div class="deck-caption"><p>05 — Brand Symbolism: Preservation to Open-Source</p></div></div>
+      <div class="deck-item" onclick="openLb(5)"><img src="slide-06.jpg" alt="Slide 06"><div class="deck-caption"><p>06 — Content Architecture: Bridging Science & Adoption</p></div></div>
+      <div class="deck-item" onclick="openLb(6)"><img src="slide-07.jpg" alt="Slide 07"><div class="deck-caption"><p>07 — Four Core Pillars of Agricultural Transformation</p></div></div>
+      <div class="deck-item" onclick="openLb(7)"><img src="slide-08.jpg" alt="Slide 08"><div class="deck-caption"><p>08 — Orbital and Biological Intelligence</p></div></div>
+      <div class="deck-item" onclick="openLb(8)"><img src="slide-09.jpg" alt="Slide 09"><div class="deck-caption"><p>09 — Molecular Engineering &amp; Ideal Plant Architecture</p></div></div>
+      <div class="deck-item" onclick="openLb(9)"><img src="slide-10.jpg" alt="Slide 10"><div class="deck-caption"><p>10 — Planetary Noise to Actionable Intelligence</p></div></div>
+      <div class="deck-item" onclick="openLb(10)"><img src="slide-11.jpg" alt="Slide 11"><div class="deck-caption"><p>11 — Agri-Object Model Integration Hub</p></div></div>
+      <div class="deck-item" onclick="openLb(11)"><img src="slide-12.jpg" alt="Slide 12"><div class="deck-caption"><p>12 — AgriChain Nexus: AI &amp; Blockchain</p></div></div>
+      <div class="deck-item" onclick="openLb(12)"><img src="slide-13.jpg" alt="Slide 13"><div class="deck-caption"><p>13 — FAIR Governance &amp; Edge-Cloud Orchestration</p></div></div>
+      <div class="deck-item" onclick="openLb(13)"><img src="slide-14.jpg" alt="Slide 14"><div class="deck-caption"><p>14 — The Unified Architecture Flywheel</p></div></div>
+      <div class="deck-item" onclick="openLb(14)"><img src="slide-15.jpg" alt="Slide 15"><div class="deck-caption"><p>15 — Return on Architecture: High-Value Outcomes</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lb">
+  <button id="lb-close" onclick="closeLb()">✕</button>
+  <button id="lb-prev" onclick="lbMove(-1)">‹</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next" onclick="lbMove(1)">›</button>
+  <div id="lb-counter"></div>
+</div>
+
+<!-- ════════ CTA ════════ -->
+<section id="cta">
+  <div class="container">
+    <p class="eyebrow r">Partner With Producer Co.</p>
+    <h2 class="r">Ready to build the <em>future</em><br>of global agriculture?</h2>
+    <p class="r">Join us in designing the complete digital ecosystem — from brand identity to satellite intelligence — that will feed the world through climate uncertainty.</p>
+    <div class="cta-btns r">
+      <a href="mailto:contact@producerco.io" class="btn-gold-fill">Start a Conversation</a>
+      <a href="#challenge" class="btn-outline">Explore Architecture</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="col-brand">
+      <div class="fb-logo">Producer Co.</div>
+      <p>Designing digital ecosystems for global agricultural transformation — from the satellite to the seed, from brand identity to blockchain governance.</p>
+    </div>
+    <div>
+      <h5>Architecture</h5>
+      <a href="#pillars">Four Pillars</a>
+      <a href="#flywheel">The Flywheel</a>
+      <a href="#technology">Technology Stack</a>
+      <a href="#brand">Brand System</a>
+    </div>
+    <div>
+      <h5>Technology</h5>
+      <a href="#technology">CRISP Pipeline</a>
+      <a href="#technology">Global Rice Array</a>
+      <a href="#technology">AgriChain Nexus</a>
+      <a href="#technology">FAIR Governance</a>
+    </div>
+    <div>
+      <h5>Frameworks</h5>
+      <a href="#challenge">SRP Standards</a>
+      <a href="#stakeholders">Stakeholders</a>
+      <a href="#global">UN / AFMA</a>
+      <a href="#outcomes">Impact Metrics</a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <p>© 2026 Producer Co. — Digital Ecosystems for Global Agricultural Transformation.</p>
+    <p style="color:var(--gold);font-size:12px;letter-spacing:.06em">Surface to Seed</p>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on') });
+},{threshold:.07,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.r').forEach(el => io.observe(el));
+
+// Nav shadow
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.boxShadow =
+    window.scrollY > 30 ? '0 4px 28px rgba(26,25,22,0.07)' : 'none';
+});
+
+// Lightbox
+const slides = ['slide-01.jpg','slide-02.jpg','slide-03.jpg','slide-04.jpg','slide-05.jpg',
+  'slide-06.jpg','slide-07.jpg','slide-08.jpg','slide-09.jpg','slide-10.jpg',
+  'slide-11.jpg','slide-12.jpg','slide-13.jpg','slide-14.jpg','slide-15.jpg'];
+let lbIdx = 0;
+
+function openLb(i){
+  lbIdx = i;
+  const lb = document.getElementById('lb');
+  document.getElementById('lb-img').src = slides[lbIdx];
+  document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + slides.length;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb(){
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbMove(dir){
+  lbIdx = (lbIdx + dir + slides.length) % slides.length;
+  document.getElementById('lb-img').src = slides[lbIdx];
+  document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + slides.length;
+}
+document.getElementById('lb').addEventListener('click', function(e){
+  if(e.target === this) closeLb();
+});
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lb');
+  if(!lb.classList.contains('open')) return;
+  if(e.key === 'Escape') closeLb();
+  if(e.key === 'ArrowRight') lbMove(1);
+  if(e.key === 'ArrowLeft') lbMove(-1);
+});
+</script>
+</body>
+</html>
