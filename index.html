@@ -343,6 +343,70 @@ footer{background:var(--c1);border-top:1px solid var(--border);padding:72px 0 44
 .partner-sectors{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .sector-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border:1px solid var(--border);color:var(--muted);background:var(--white)}
 
+/* ══════════ SUSTAINABILITY ══════════ */
+#sustainability{background:var(--c0)}
+.sust-hero-img{display:block;width:100%;border:1px solid var(--border);box-shadow:var(--shadow-lg);margin-top:52px;border-radius:2px}
+.sust-shift{display:grid;grid-template-columns:1fr auto 1fr;gap:0;margin-top:52px;border:1px solid var(--border);overflow:hidden}
+.sust-past{background:var(--c2);padding:36px 40px;border-right:1px solid var(--border)}
+.sust-future{background:#EFF6F2;padding:36px 40px}
+.sust-col-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;font-weight:400}
+.sust-past .sust-col-label{color:var(--muted)}
+.sust-future .sust-col-label{color:var(--sage)}
+.sust-shift-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.sust-shift-col ul li{font-size:14px;color:var(--ink2);line-height:1.7;padding-left:16px;position:relative}
+.sust-shift-col ul li::before{content:'—';position:absolute;left:0;color:var(--muted);font-size:12px}
+.sust-future ul li::before{color:var(--sage)}
+.sust-arrow-col{display:flex;align-items:center;justify-content:center;padding:0 28px;background:var(--white);font-size:24px;color:var(--gold)}
+.sust-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--border);border:1px solid var(--border);margin-top:0}
+.sust-pillar{background:var(--white);padding:44px 36px;transition:background .22s}
+.sust-pillar:hover{background:var(--c0)}
+.sp-num{font-family:Georgia,serif;font-size:12px;letter-spacing:.12em;color:var(--muted);margin-bottom:8px}
+.sp-tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.sp-nbs .sp-tag{color:var(--sage)}
+.sp-esg .sp-tag{color:var(--gold)}
+.sp-sdg .sp-tag{color:var(--sky)}
+.sust-pillar h3{font-size:19px;margin-bottom:12px}
+.sust-pillar>p{font-size:13px;color:var(--muted);line-height:1.85}
+.sp-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:18px;padding-top:18px;border-top:1px solid var(--border)}
+.sp-list li{font-size:13px;color:var(--muted);line-height:1.75}
+.sp-list li strong{color:var(--ink2)}
+.sust-dmrv{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;border:1px solid var(--border);background:var(--border);margin-top:0}
+.sust-dmrv-step{background:var(--white);padding:40px 32px;transition:background .22s}
+.sust-dmrv-step:hover{background:var(--c0)}
+.sdmrv-num{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sust-dmrv-step h4{font-size:16px;margin-bottom:5px}
+.sdmrv-sub{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.sust-dmrv-step p{font-size:13px;color:var(--muted);line-height:1.8}
+.sust-dmrv-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--gold);padding:0 16px;background:var(--white)}
+.sust-tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--border);border:1px solid var(--border);margin-top:0}
+.sust-tech-card{background:var(--white);padding:36px 28px;transition:background .22s}
+.sust-tech-card:hover{background:var(--c0)}
+.stc-tag{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);margin-bottom:16px}
+.stc-n{font-family:Georgia,serif;font-size:46px;color:var(--ink);line-height:1;letter-spacing:-.02em}
+.stc-n span{font-size:20px;color:var(--gold)}
+.stc-l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px;margin-bottom:16px}
+.stc-p{font-size:13px;color:var(--muted);line-height:1.8}
+.sust-pathway{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:0;border:1px solid var(--border);background:var(--border);margin-top:0;align-items:stretch}
+.sust-path-step{background:var(--white);padding:36px 28px;transition:background .22s}
+.sust-path-step:hover{background:var(--c0)}
+.sps-n{font-family:Georgia,serif;font-size:28px;color:var(--gold);line-height:1;margin-bottom:10px}
+.sust-path-step h4{font-size:15px;margin-bottom:7px}
+.sust-path-step p{font-size:13px;color:var(--muted);line-height:1.8}
+.sust-path-arrow{display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--gold);padding:0 12px;background:var(--white)}
+.sust-path-split{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+.sust-path-branch{background:var(--white);padding:24px 28px;flex:1}
+.sust-path-branch h4{font-size:14px;margin-bottom:6px}
+.sust-path-branch p{font-size:13px;color:var(--muted);line-height:1.75}
+.sps-ungm{font-family:Georgia,serif;font-size:22px;color:var(--sky);margin-bottom:8px;line-height:1}
+.sps-b2b{font-family:Georgia,serif;font-size:22px;color:var(--gold);margin-bottom:8px;line-height:1}
+.sust-deck-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:0}
+.sust-deck-item{position:relative;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:box-shadow .25s,border-color .25s}
+.sust-deck-item:hover{border-color:var(--border-gold);box-shadow:var(--shadow-lg)}
+.sust-deck-item img{display:block;width:100%;height:auto;transition:transform .3s}
+.sust-deck-item:hover img{transform:scale(1.02)}
+.sust-deck-caption{padding:11px 14px;background:var(--white);border-top:1px solid var(--border)}
+.sust-deck-caption p{font-size:11px;color:var(--muted);letter-spacing:.04em}
+
 /* ══════════ SLIDE IMAGES ══════════ */
 .slide-img{display:block;width:100%;border:1px solid var(--border);box-shadow:var(--shadow-lg);border-radius:2px}
 .slide-frame{margin-top:52px;position:relative}
@@ -385,6 +449,15 @@ footer{background:var(--c1);border-top:1px solid var(--border);padding:72px 0 44
   .hero-viz{display:none}
   .hero-wrap{grid-template-columns:1fr}
   .chal-grid,.tech-intro,.flywheel-wrap,.brand-grid,.global-grid,.agrichain,.crisp-grid,.molecular,.partner-body{grid-template-columns:1fr}
+  .sust-shift{grid-template-columns:1fr}
+  .sust-arrow-col{padding:16px 0;font-size:20px}
+  .sust-pillars{grid-template-columns:1fr}
+  .sust-dmrv{grid-template-columns:1fr}
+  .sust-dmrv-arrow{padding:14px 0;font-size:18px}
+  .sust-tech-grid{grid-template-columns:1fr 1fr}
+  .sust-pathway{grid-template-columns:1fr}
+  .sust-path-arrow{padding:12px 0;font-size:18px}
+  .sust-path-split{flex-direction:row;gap:1px}
   .partner-body .partner-about{border-right:none;border-bottom:1px solid var(--border)}
   .partner-integration{grid-template-columns:1fr;gap:20px}
   .partner-header{flex-direction:column;align-items:flex-start;gap:20px}
@@ -402,6 +475,8 @@ footer{background:var(--c1);border-top:1px solid var(--border);padding:72px 0 44
   .hero-wrap,.container,.stats-grid,.footer-grid{padding-left:20px;padding-right:20px}
   .footer-bot{padding:20px 20px 0;flex-direction:column;gap:8px;text-align:center}
   .pillar-grid,.hub-grid,.outcomes-grid,.fair-grid,.agrichain,.crisp-grid{grid-template-columns:1fr}
+  .sust-tech-grid{grid-template-columns:1fr}
+  .sust-deck-grid{grid-template-columns:1fr}
   .stake-matrix{font-size:12px}
 }
 </style>
@@ -411,15 +486,7 @@ footer{background:var(--c1);border-top:1px solid var(--border);padding:72px 0 44
 <!-- ════════ NAV ════════ -->
 <nav>
   <a href="#hero" class="nav-logo">
-    <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-      <ellipse cx="13" cy="16" rx="5.5" ry="8" stroke="#A67C2E" stroke-width="1.1"/>
-      <circle cx="13" cy="7" r="2.8" stroke="#3D6B52" stroke-width="1.1"/>
-      <circle cx="20" cy="4" r="1.8" fill="#A67C2E" opacity=".75"/>
-      <line x1="13" y1="7" x2="20" y2="4" stroke="#A67C2E" stroke-width=".7" stroke-dasharray="2 1.5" opacity=".7"/>
-      <circle cx="22" cy="9" r="1.5" fill="#3D6B52" opacity=".7"/>
-      <line x1="20" y1="4" x2="22" y2="9" stroke="#3D6B52" stroke-width=".7" stroke-dasharray="2 1.5" opacity=".6"/>
-    </svg>
-    Producer Co.
+    <img src="producer-logo.jpg" alt="Producer Co." style="height:40px;width:auto;object-fit:contain;display:block">
   </a>
   <ul class="nav-links">
     <li><a href="#challenge">Challenge</a></li>
@@ -428,6 +495,7 @@ footer{background:var(--c1);border-top:1px solid var(--border);padding:72px 0 44
     <li><a href="#outcomes">Outcomes</a></li>
     <li><a href="#deck">Deck</a></li>
     <li><a href="#partners">Partners</a></li>
+    <li><a href="#sustainability">Sustainability</a></li>
     <li><a href="#global">Global</a></li>
   </ul>
   <a href="#cta" class="nav-cta">Partner With Us</a>
@@ -1136,6 +1204,226 @@ footer{background:var(--c1);border-top:1px solid var(--border);padding:72px 0 44
   </div>
 </section>
 
+<!-- ════════ SUSTAINABILITY ════════ -->
+<section id="sustainability">
+  <div class="container">
+    <p class="eyebrow r">Sustainability Framework</p>
+    <h2 class="sec-h r">Elevating the Global Rice Value Chain<br>Through <em style="color:var(--sage);font-style:italic">NbS, ESG &amp; SDGs</em></h2>
+    <p class="sec-p r">A systemic transformation that redesigns the ecological and financial architecture — moving from linear, fragmented production to a circular, integrated future built for human survival and global food security.</p>
+
+    <!-- Framework hero slide -->
+    <div class="slide-frame r">
+      <p class="sf-label">Systemic Transformation Framework</p>
+      <img src="sust-01.jpg" alt="Sustainability Framework" class="sust-hero-img">
+    </div>
+
+    <!-- Paradigm shift -->
+    <div class="sec-divide r"><span>The Paradigm Shift</span></div>
+    <div class="sust-shift r">
+      <div class="sust-past sust-shift-col">
+        <p class="sust-col-label">The Linear &amp; Fragmented Past</p>
+        <ul>
+          <li>Volume-driven focus</li>
+          <li>High carbon emissions &amp; high climate fragility</li>
+          <li>Isolated funding &amp; siloed farm-level management</li>
+        </ul>
+      </div>
+      <div class="sust-arrow-col">→</div>
+      <div class="sust-future sust-shift-col">
+        <p class="sust-col-label">The Circular &amp; Integrated Future</p>
+        <ul>
+          <li>Value and resilience-driven</li>
+          <li>Low-carbon with integrated Nature-based Solutions (NbS)</li>
+          <li>ESG capital flowing seamlessly through the system</li>
+          <li>UN-aligned global market connections</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pullquote r" style="margin-top:32px">
+      <p>Transformation is not merely upgrading technology — it is redesigning the ecological and financial architecture for human survival.</p>
+    </div>
+
+    <!-- Three Pillars -->
+    <div class="sec-divide r"><span>The Three Pillars</span></div>
+    <div class="sust-pillars r">
+      <div class="sust-pillar sp-nbs">
+        <p class="sp-num">01</p>
+        <p class="sp-tag">NbS — Ecological Foundation</p>
+        <h3>Landscape-Scale Integration</h3>
+        <p>Landscape-scale integration driven by the IUCN Global Standard, ensuring physical resilience, root porosity, and water security across rice-growing regions.</p>
+        <ul class="sp-list">
+          <li><strong>Water Management (Surface):</strong> Connecting floodplains and utilizing efficient irrigation to protect aquatic ecosystems.</li>
+          <li><strong>Water Quality Protection:</strong> Building riparian buffers to naturally filter agricultural run-off and prevent nutrient pollution.</li>
+          <li><strong>Groundwater Recharge:</strong> Planting low-water crops and preserving topsoil to recharge aquifers in depleted regions.</li>
+          <li><strong>Disaster Risk Reduction:</strong> Restoring natural wetlands to buffer extreme weather events and protect community infrastructure.</li>
+        </ul>
+      </div>
+      <div class="sust-pillar sp-esg">
+        <p class="sp-num">02</p>
+        <p class="sp-tag">ESG — Governance Engine</p>
+        <h3>NbS+ESG Integration</h3>
+        <p>Transparent dMRV, strict ILO labor safeguards, and blended finance mechanisms that translate farm data into capital — elevating the governance standard far beyond traditional SRP.</p>
+        <ul class="sp-list">
+          <li><strong>Landscape-Level Governance:</strong> Collective management of shared aquifers and biodiversity corridors.</li>
+          <li><strong>Strict Social Safeguards:</strong> Rigorous ILO labor standards and community health protocols.</li>
+          <li><strong>Processing Stage Expansion:</strong> Enforces energy efficiency (husk-to-energy) and safe labor conditions inside mills.</li>
+          <li><strong>Nature Disclosures:</strong> Full alignment with global TNFD and ESRS reporting requirements.</li>
+        </ul>
+      </div>
+      <div class="sust-pillar sp-sdg">
+        <p class="sp-num">03</p>
+        <p class="sp-tag">SDGs — Institutional Anchor</p>
+        <h3>Global Institutional Access</h3>
+        <p>Connecting verified sustainable products directly to UN procurement networks (UNGM) and high-value international buyers — with regional governance through FAO, UNESCAP, and AFMA.</p>
+        <ul class="sp-list">
+          <li><strong>SDG 17 Humanitarian Procurement:</strong> Connections to global food security networks via UNGM.</li>
+          <li><strong>SDG 17 Corporate ESG:</strong> High-value B2B international pathways for ESG-driven corporations.</li>
+          <li><strong>Regional Governance:</strong> Intergovernmental bodies providing policy frameworks and standard alignment.</li>
+          <li><strong>STNSM Initiative:</strong> Acts as "Data Custodian" and ESG risk classifier to strictly prevent ESG washing.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Blueprint slide -->
+    <div class="slide-2col r" style="margin-top:48px">
+      <div>
+        <p class="sf-label">The Architectural Blueprint</p>
+        <img src="sust-03.jpg" alt="Architectural Blueprint" class="slide-img">
+      </div>
+      <div>
+        <p class="sf-label">Pillar 1 — Landscape-Scale Integration (NbS)</p>
+        <img src="sust-04.jpg" alt="NbS Landscape Integration" class="slide-img">
+      </div>
+    </div>
+
+    <!-- Digital Core dMRV -->
+    <div class="sec-divide r"><span>Digital Core: Transparent dMRV</span></div>
+    <div class="sust-dmrv r">
+      <div class="sust-dmrv-step">
+        <p class="sdmrv-num">Layer 1</p>
+        <h4>Data Capture</h4>
+        <p class="sdmrv-sub">The Physical Edge</p>
+        <p>IoT soil/water sensors, Earth Observation (EO) satellite modeling via CRISP, and drone mapping providing real-time field intelligence.</p>
+      </div>
+      <div class="sust-dmrv-arrow">→</div>
+      <div class="sust-dmrv-step">
+        <p class="sdmrv-num">Layer 2</p>
+        <h4>Standard Verification</h4>
+        <p class="sdmrv-sub">The Digital Crucible</p>
+        <p>AI-driven verification against Verra VM0051 &amp; Gold Standard. Smart contracts ensure immutability and prevent ESG washing at the source.</p>
+      </div>
+      <div class="sust-dmrv-arrow">→</div>
+      <div class="sust-dmrv-step">
+        <p class="sdmrv-num">Layer 3</p>
+        <h4>Market Asset</h4>
+        <p class="sdmrv-sub">The Financial Output</p>
+        <p>High-integrity Carbon Credits and Certified Sustainable Produce providing Net-Zero corporations with legally defensible assets.</p>
+      </div>
+    </div>
+
+    <!-- Finance pullquote -->
+    <div class="pullquote r" style="margin-top:32px">
+      <p>High-integrity ESG data is the collateral that unlocks transition finance.</p>
+    </div>
+
+    <!-- Methane Reduction Stats -->
+    <div class="sec-divide r"><span>Cultivation Interventions &amp; Methane Reduction</span></div>
+    <div class="sust-tech-grid r">
+      <div class="sust-tech-card">
+        <p class="stc-tag">AWD — Alternate Wetting &amp; Drying</p>
+        <p class="stc-n">30–53<span>%</span></p>
+        <p class="stc-l">Methane Reduction</p>
+        <p class="stc-p">Reduces water use by 20–40%; maintains or boosts yield up to 40%. Highly scalable in irrigated regions with precise water control.</p>
+      </div>
+      <div class="sust-tech-card">
+        <p class="stc-tag">DSR — Direct Seeded Rice</p>
+        <p class="stc-n">35–50<span>%</span></p>
+        <p class="stc-l">Methane Reduction</p>
+        <p class="stc-p">Avoids initial flooding, cuts labor by 25–30%, and shortens cultivation cycles. Requires specific seeding machinery and resilient genetics.</p>
+      </div>
+      <div class="sust-tech-card">
+        <p class="stc-tag">Residue Management &amp; Biochar</p>
+        <p class="stc-n">~15<span>%</span></p>
+        <p class="stc-l">Baseline Reduction + Carbon Sequestration</p>
+        <p class="stc-p">Restores soil structure, improves air quality by eliminating burning. Requires localized logistical hubs for husk processing.</p>
+      </div>
+      <div class="sust-tech-card">
+        <p class="stc-tag">Verified Sustainable Rice Market</p>
+        <p class="stc-n">320<span>B</span></p>
+        <p class="stc-l">USD Market Opportunity</p>
+        <p class="stc-p">The total addressable market for verified sustainable produce — connecting Retail &amp; B2B, Genetics, Processing, and Cultivation nodes.</p>
+      </div>
+    </div>
+
+    <!-- Methane table slide -->
+    <div class="slide-frame r">
+      <p class="sf-label">Cultivation Interventions &amp; Methane Reduction Strategies</p>
+      <img src="sust-05.jpg" alt="Methane Reduction Strategies" class="slide-img">
+    </div>
+
+    <!-- Value Chain Pathway -->
+    <div class="sec-divide r"><span>The Complete Value Chain Pathway</span></div>
+    <div class="sust-pathway r">
+      <div class="sust-path-step">
+        <p class="sps-n">01</p>
+        <h4>Local Standard</h4>
+        <p>Implementation of NbS (AWD/DSR) and capturing physical data — the soil-level foundation of all verified output.</p>
+      </div>
+      <div class="sust-path-arrow">→</div>
+      <div class="sust-path-step">
+        <p class="sps-n">02</p>
+        <h4>CSCAP &amp; SSA Framework</h4>
+        <p>The Impact Chain Pathway standardizing regional output and formalizing the data into internationally recognized metrics.</p>
+      </div>
+      <div class="sust-path-arrow">→</div>
+      <div class="sust-path-step">
+        <p class="sps-n">03</p>
+        <h4>STNSM / Sustainism</h4>
+        <p>The Data Custodian locking in ESG risk classification using Green, Red, and Black lists — preventing greenwashing at the source.</p>
+      </div>
+      <div class="sust-path-arrow">→</div>
+      <div class="sust-path-split">
+        <div class="sust-path-branch">
+          <p class="sps-ungm">A</p>
+          <h4>UNGM Access</h4>
+          <p>Direct supply to the UN Global Marketplace for humanitarian procurement and regional food security.</p>
+        </div>
+        <div class="sust-path-branch">
+          <p class="sps-b2b">B</p>
+          <h4>High-Value B2B</h4>
+          <p>Direct supply to corporate ESG/SDG buyers and international carbon markets.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sustainability Deck Gallery -->
+    <div class="sec-divide r"><span>Sustainability Research Deck</span></div>
+    <p class="sec-p r" style="margin-bottom:32px">All 13 slides from the Sustainable Rice Transformation framework. Click any to view full size.</p>
+    <div class="sust-deck-grid r">
+      <div class="sust-deck-item" onclick="window.open('sust-01.jpg')"><img src="sust-01.jpg" alt="Sust 01"><div class="sust-deck-caption"><p>01 — Systemic Transformation Framework</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-02.jpg')"><img src="sust-02.jpg" alt="Sust 02"><div class="sust-deck-caption"><p>02 — The Paradigm Shift</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-03.jpg')"><img src="sust-03.jpg" alt="Sust 03"><div class="sust-deck-caption"><p>03 — The Architectural Blueprint</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-04.jpg')"><img src="sust-04.jpg" alt="Sust 04"><div class="sust-deck-caption"><p>04 — Pillar 1: Landscape-Scale Integration (NbS)</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-05.jpg')"><img src="sust-05.jpg" alt="Sust 05"><div class="sust-deck-caption"><p>05 — Cultivation Interventions &amp; Methane Reduction</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-06.jpg')"><img src="sust-06.jpg" alt="Sust 06"><div class="sust-deck-caption"><p>06 — Pillar 2: NbS+ESG Governance Engine</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-07.jpg')"><img src="sust-07.jpg" alt="Sust 07"><div class="sust-deck-caption"><p>07 — The Blended Finance Blueprint</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-08.jpg')"><img src="sust-08.jpg" alt="Sust 08"><div class="sust-deck-caption"><p>08 — Pillar 3: SDGs as the Institutional Anchor</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-09.jpg')"><img src="sust-09.jpg" alt="Sust 09"><div class="sust-deck-caption"><p>09 — The Digital Core: Transparent dMRV</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-10.jpg')"><img src="sust-10.jpg" alt="Sust 10"><div class="sust-deck-caption"><p>10 — Strategic Ecosystem: Value Chain Activation</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-11.jpg')"><img src="sust-11.jpg" alt="Sust 11"><div class="sust-deck-caption"><p>11 — Target Buyer Segments &amp; Adoption Drivers</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-12.jpg')"><img src="sust-12.jpg" alt="Sust 12"><div class="sust-deck-caption"><p>12 — The Complete Value Chain Synthesis</p></div></div>
+      <div class="sust-deck-item" onclick="window.open('sust-13.jpg')"><img src="sust-13.jpg" alt="Sust 13"><div class="sust-deck-caption"><p>13 — Strategic Mandates for Adoption</p></div></div>
+    </div>
+
+    <!-- Final strategic mandate -->
+    <div class="pullquote r" style="margin-top:52px">
+      <p>The future of global food security does not rely on extracting more from the earth, but in designing an architecture where sustainability is the most profitable path forward.</p>
+      <cite>Strategic Mandate — Producer Co. Sustainability Framework</cite>
+    </div>
+
+  </div>
+</section>
+
 <!-- ════════ FULL DECK ════════ -->
 <section id="deck">
   <div class="container">
@@ -1178,7 +1466,7 @@ footer{background:var(--c1);border-top:1px solid var(--border);padding:72px 0 44
     <h2 class="r">Ready to build the <em>future</em><br>of global agriculture?</h2>
     <p class="r">Join us in designing the complete digital ecosystem — from brand identity to satellite intelligence — that will feed the world through climate uncertainty.</p>
     <div class="cta-btns r">
-      <a href="mailto:contact@producerco.io" class="btn-gold-fill">Start a Conversation</a>
+      <a href="mailto:info@producer-co.com" class="btn-gold-fill">Start a Conversation</a>
       <a href="#challenge" class="btn-outline">Explore Architecture</a>
     </div>
   </div>
